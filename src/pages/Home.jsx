@@ -4,12 +4,10 @@ import Hero from "../components/Header/Hero";
 export default function Home() {
   return (
     <>
-
-        <div>
+        <div className="min-h-screen flex flex-col justify-evenly">
             <Hero/>
             <Body/>
         </div>
-
     </>
   );
 }

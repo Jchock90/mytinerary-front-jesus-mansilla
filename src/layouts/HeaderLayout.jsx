@@ -7,8 +7,6 @@ export default function HeaderLayout() {
     <>
         <Header />
         <Outlet />
-
-      
     </>
   );
 }

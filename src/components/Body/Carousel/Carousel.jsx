@@ -1,7 +1,6 @@
 import Arrow from "./Arrow";
 import Card from "./Card/Card";
 import { useState } from "react";
-
 export default function Carousel({data}) {
 
 const [counterFrom, setCounterFrom] = useState(0)
@@ -50,43 +49,30 @@ function previousMobile() {
     }
 }
 
-
-
   return (
     <>    
-    <div className="hidden items-center flex-col gap-10 mx-2 
-    md:mb-4
-    md:flex 
-    lg:w-2/3">
-        <h1 className="text-2xl font-light text-[#4F46E5]">Popular Mytineraries</h1>
-        <div className="flex flex-wrap items-center justify-center drop-shadow-xl gap-2
-        md:flex-nowrap  
-        lg:justify-between">
-            <Arrow direction="M15.75 19.5L8.25 12l7.5-7.5" 
-            className="inline-flex" onClick={previous} />
-            
+    <div className="hidden items-center flex-col gap-10 mx-2 md:mb-4 md:flex lg:w-2/3">
+        <h1 className="text-2xl font-light text-[#1C1C1C]">Popular Mytineraries</h1>
+        <div className="flex flex-wrap items-center justify-center drop-shadow-xl gap-2 md:flex-nowrap lg:justify-between">
+            <Arrow direction="M15.75 19.5L8.25 12l7.5-7.5" className="inline-flex" onClick={previous} />
                 {data.slice(counterFrom,counterTo).map(
-                item => <Card
-                            key={item.city} 
+                item => <><Card
+                            key={item._id} 
                             src={item.photo} 
                             city={item.city}
+                            id={item._id}
                         />
+                </>
                 )}
-            
             <Arrow direction="M8.25 4.5l7.5 7.5-7.5 7.5"
                 className="inline-flex" onClick={next} />
         </div>
     </div>
 
-    <div className="flex items-center flex-col gap-10 mb-4
-    md:hidden 
-    lg:w-2/3">
-        <h1 className="text-2xl font-light text-[#4F46E5]">Popular Mytineraries</h1>
-        <div className="flex flex-nowrap items-center justify-center gap-2 drop-shadow-xl
-        lg:justify-between ">
-            <Arrow direction="M15.75 19.5L8.25 12l7.5-7.5" 
-            className="inline-flex" onClick={previousMobile} />
-            
+    <div className="flex items-center flex-col gap-10 mb-4 md:hidden lg:w-2/3">
+        <h1 className="text-2xl font-light text-[#1C1C1C]">Popular Mytineraries</h1>
+        <div className="flex flex-nowrap items-center justify-center gap-2 drop-shadow-xl lg:justify-between ">
+            <Arrow direction="M15.75 19.5L8.25 12l7.5-7.5" className="inline-flex" onClick={previousMobile} />
                 {data.slice(counterFromMob,counterToMob).map(
                 item => <Card
                             key={item.city} 
@@ -94,12 +80,10 @@ function previousMobile() {
                             city={item.city}
                         />
                 )}
-            
             <Arrow direction="M8.25 4.5l7.5 7.5-7.5 7.5"
                 className="inline-flex" onClick={nextMobile} />
         </div>
     </div>
-      
     </>
   );
 }

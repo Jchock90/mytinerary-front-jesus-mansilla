@@ -5,12 +5,11 @@ import Footer from '../components/Footer/Footer';
 export default function MainLayout() {
   return (
     <>
-      <div className='w-full min-h-screen'>
-        <Header />
-            <Outlet />
-        <Footer />
-      </div>
-
+        <div className='w-full min-h-screen'>
+            <Header />
+                <Outlet />
+            <Footer />
+        </div>
     </>
   );
 }

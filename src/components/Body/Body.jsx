@@ -1,25 +1,28 @@
+import { useSelector, useDispatch } from "react-redux";
 import Carousel from "./Carousel/Carousel";
 import Content from "./Content/Content";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import apiUrl from "../../../apiUrl";
+import { useEffect } from "react";
+
+import cities_actions from "../../store/actions/cities";
+
+const { read_carousel } = cities_actions
 
 export default function Body() {
-    const [data, setData] = useState([])
+    const carousel_redux = useSelector(store => store.cities.carousel)
+    const dispatch = useDispatch()
+
     useEffect(
         () => {
-            axios(apiUrl + 'cities/carousel')
-                .then(res => setData(res.data.data))
-                .catch(err => console.log(err))
-        },
-        []
+            dispatch( read_carousel({carousel: carousel_redux}) )
+            }, []
+
     )
 
   return (
     <>
       <div className="justify-between mx-10 mb-6 md:flex-nowrap md:mb-0 lg:flex lg:justify-center">
         <Content/>
-        <Carousel data={data}  />
+        <Carousel data={carousel_redux}/>
       </div>
     </>
   );

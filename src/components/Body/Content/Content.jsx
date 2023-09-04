@@ -4,7 +4,7 @@ export default function Content() {
   return (
     <>
         <div className="flex flex-col mb-16 gap-10 lg:w-1/2 ">
-            <h1 className="flex text-4xl font-bold text-[#1C1C1C] xl:text-4xl">
+            <h1 className="flex text-3xl font-bold text-[#1C1C1C] xl:text-4xl ">
               Find the perfect destination
             </h1>
             <p className="flex justify-start text-xl text-[#1C1C1C] font">

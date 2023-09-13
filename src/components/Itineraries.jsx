@@ -2,19 +2,25 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import itinerary_action from "../store/actions/itineraries";
+import activity_action from "../store/actions/activities";
 import ItineraryList from "./ItineraryList";
 
 const { read_itineraries_from_city } = itinerary_action;
+const { read_activities } = activity_action;
 
 function Itineraries() {
   const { id } = useParams();
   const itineraries_redux = useSelector(
     (store) => store.itineraries.itineraries
   );
+  const activities_redux = useSelector(
+    (store) => store.activities.activities 
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(read_itineraries_from_city({ city_id: id }));
+    dispatch(read_activities({ _id: id })); 
   }, [dispatch, id]);
 
   const [expandedItinerary, setExpandedItinerary] = useState(null);
@@ -56,6 +62,7 @@ function Itineraries() {
         expandedItinerary={expandedItinerary}
         onToggleLike={toggleLike}
         onToggleExpand={toggleExpand}
+        activities={activities_redux}
       />
     </div>
   );

@@ -9,6 +9,7 @@ function ItineraryCard({
   likeCount,
   onToggleExpand,
   isExpanded,
+  activities,
 }) {
   return (
     <>
@@ -51,8 +52,24 @@ function ItineraryCard({
         {isExpanded && (
           <>
             <div className="text-center uppercase mt-4">
-              <p className="text-sm font-semibold">Activities Under Construction</p>
+              <p className="text-md font-semibold">Activities:</p>
             </div>
+            <div className="flex flex-col space-y-2 mt-2">
+              {activities.map((activity) => (
+                <div key={activity._id} className="text-center">
+                  <p className="text-sm font-semibold">{activity.name}</p>
+                  <img
+                    src={activity.photo}
+                    alt={activity.name}
+                    className="w-48 h-32 object-cover rounded-md mx-auto mb-2"
+                  />
+                </div>
+              ))}
+            </div>
+          </>
+        )}
+        {isExpanded && (
+          <>
             <div className="text-center uppercase mt-4">
               <p className="text-sm font-semibold">Comments Under Construction</p>
             </div>
